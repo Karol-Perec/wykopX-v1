@@ -1,14 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 import * as S from './style';
 
-const NavItem = (props) => {
+const NavItem = ({link, exact, children}) => {
   return (
     <S.ListItem>
-      <NavLink to={props.link} exact={props.exact}>
-        {props.children}
-      </NavLink>
+      <S.NavLinkWrapper to={link} exact={exact}>
+        {children}
+      </S.NavLinkWrapper>
     </S.ListItem>
   );
 };

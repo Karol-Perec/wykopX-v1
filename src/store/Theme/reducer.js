@@ -15,7 +15,7 @@ const lightTheme = {
 export const darkTheme = {
   BACKGROUND_COLOR: '#121212',
   SURFACE_COLOR: '#1e1e1e',
-  PRIMARY_COLOR: '#4283hf',
+  PRIMARY_COLOR: '#328efe',
   SECONDARY_COLOR: '#ff5917',
   ERROR_COLOR: '#d32f2f',
   ON_PRIMARY_COLOR: '#fff',

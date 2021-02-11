@@ -3,7 +3,7 @@ import NavItem from './NavItem/NavItem';
 
 import * as S from './style';
 
-const NavItems = () => {
+const NavItems = ({topBarMode}) => {
   const isAuthenticated = false; //////////
 
   const myWykop = isAuthenticated ? (
@@ -11,10 +11,8 @@ const NavItems = () => {
   ) : null;
 
   return (
-    <S.UnorderedList>
-      <NavItem link='/' exact>
-        Główna
-      </NavItem>
+    <S.UnorderedList topBarMode={topBarMode}>
+      <NavItem link='/' exact>Główna</NavItem>
       <NavItem link='/wykopalisko'>Wykopalisko</NavItem>
       <NavItem link='/hity'>Hity</NavItem>
       <NavItem link='/mikroblog'>Mikroblog</NavItem>

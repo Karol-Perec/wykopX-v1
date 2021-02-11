@@ -1,13 +1,17 @@
 import React from 'react';
 import NavItems from '../NavItems/NavItems';
+import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
 
-import StyledHeader from './style';
+import * as S from './style';
 
-const Topbar = () => {
+const Topbar = ({ onDrawerToggleClick }) => {
   return (
-    <StyledHeader>
-      <NavItems />
-    </StyledHeader>
+    <S.Header>
+      <DrawerToggle onClick={onDrawerToggleClick} />
+      <nav>
+        <NavItems topBarMode />
+      </nav>
+    </S.Header>
   );
 };
 
