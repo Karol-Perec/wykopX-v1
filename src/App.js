@@ -1,7 +1,10 @@
 import { useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
+import { Switch, Route, Redirect} from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
+import MainPage from './containers/MainPage/MainPage'
+import Hits from './containers/Hits/Hits'
 
 const Div = styled.div`
   text-align: center;
@@ -10,10 +13,18 @@ const Div = styled.div`
 function App() {
   const theme = useSelector((state) => state.theme.theme);
 
+  const routes = (
+    <Switch>
+      <Route path='/hity' component={Hits} />
+      <Route path='/' exact component={MainPage} />
+      <Redirect to='/' />
+    </Switch>
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <Div>
-        <Layout />
+        <Layout>{routes}</Layout>
       </Div>
     </ThemeProvider>
   );

@@ -3,6 +3,8 @@ import Footer from './Footer/Footer';
 import SideDrawer from './SideDrawer/SideDrawer';
 import TopBar from './TopBar/TopBar';
 
+import * as S from './style'
+
 const Layout = ({ children }) => {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
 
@@ -21,7 +23,7 @@ const Layout = ({ children }) => {
         onBackdropClick={handleSideDrawerClose}
         show={showSideDrawer}
       />
-      <main>{children}</main>
+      <S.Main>{children}</S.Main>
       <Footer />
     </>
   );
