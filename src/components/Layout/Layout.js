@@ -3,7 +3,7 @@ import Footer from './Footer/Footer';
 import SideDrawer from './SideDrawer/SideDrawer';
 import TopBar from './TopBar/TopBar';
 
-import * as S from './style'
+import * as S from './style';
 
 const Layout = ({ children }) => {
   const [showSideDrawer, setShowSideDrawer] = useState(false);

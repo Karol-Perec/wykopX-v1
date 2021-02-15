@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const OuterDiv = styled.div`
-  width: 40px;
+  width: 30px;
   height: 100%;
   display: flex;
   flex-flow: column;
   justify-content: space-around;
   align-items: center;
-  padding: 10px 0;
+  padding: 14px 0;
   box-sizing: border-box;
   cursor: pointer;
 
@@ -17,7 +17,7 @@ export const OuterDiv = styled.div`
 `;
 
 export const InnerDiv = styled.div`
-  width: 90%;
-  height: 3px;
+  width: 100%;
+  height: 2px;
   background-color: white;
 `;

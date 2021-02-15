@@ -5,6 +5,7 @@ import { Switch, Route, Redirect} from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import MainPage from './containers/MainPage/MainPage'
 import Hits from './containers/Hits/Hits'
+import Link from './components/Links/Link/Link';
 
 const Div = styled.div`
   text-align: center;
@@ -16,6 +17,7 @@ function App() {
   const routes = (
     <Switch>
       <Route path='/hity' component={Hits} />
+      <Route path='/link/:id' component={Link} />
       <Route path='/' exact component={MainPage} />
       <Redirect to='/' />
     </Switch>

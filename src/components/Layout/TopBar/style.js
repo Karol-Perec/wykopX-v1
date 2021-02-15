@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Header = styled.header`
   background-color: ${(props) => props.theme.SURFACE_COLOR};
+  box-shadow:  0 4px 4px rgba(0, 0, 0, 0.4);
   height: 56px;
   width: 100%;
   position: fixed;
