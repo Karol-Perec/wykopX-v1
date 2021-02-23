@@ -5,10 +5,7 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import {ReactComponent as Logo} from '../../../../assets/images/logo.svg';
 
 export const Container = styled.div`
-  background-color: ${(props) => props.theme.SURFACE_COLOR};
-  border-radius: 5px 5px;
-  margin: 20px;
-  padding: 20px;
+  color: ${(props) => props.theme.ON_SURFACE_COLOR};
 `;
 
 export const VoteCount = styled.div``;

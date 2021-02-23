@@ -3,9 +3,8 @@ import React from 'react';
 import * as S from './style';
 
 const Statistics = ({ date, isHot, commentsCount, voteCount }) => {
-
   return (
-    <div>
+    <S.Container>
       <S.VoteCount>
         <S.CommentIcons />
         <span>{voteCount}</span>
@@ -20,7 +19,7 @@ const Statistics = ({ date, isHot, commentsCount, voteCount }) => {
         <S.LinkAgeIcon />
         <span>{calculateAprroximatedAge(date)}</span>
       </S.LinkAge>
-    </div>
+    </S.Container>
   );
 };
 

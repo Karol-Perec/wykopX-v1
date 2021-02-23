@@ -22,7 +22,7 @@ export const NavLinkWrapper = styled(NavLink)`
   width: 100%;
   box-sizing: border-box;
   display: block;
-  color: white;
+  color: ${(props) => props.theme.ON_SURFACE_COLOR};
 
   &:hover,
   &:active,

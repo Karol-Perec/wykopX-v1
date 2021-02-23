@@ -20,5 +20,6 @@ export const Title = styled.h2`
 `;
 
 export const Description = styled.p`
-  color: ${(props) => props.theme.ON_SURFACE_COLOR};
+  color: ${(props) => props.theme.ON_SURFACE_2_COLOR};
+  font-size: 0.8rem;
 `;

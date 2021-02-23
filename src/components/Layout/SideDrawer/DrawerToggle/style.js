@@ -18,6 +18,6 @@ export const OuterDiv = styled.div`
 
 export const InnerDiv = styled.div`
   width: 100%;
-  height: 2px;
-  background-color: white;
+  height: 3px;
+  background-color: ${(props) => props.theme.ON_SURFACE_COLOR};
 `;
