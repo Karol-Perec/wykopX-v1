@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import LinkAbstract from '../LinkAbstract/LinkAbstract';
 
 import * as S from './style'
 
-const EntriesList = ({ entriesList = [] }) => {
-  let entries = null;
-  if (entriesList) {
-    entries = entriesList.map((entry) => (
+const LinksList = ({ linksList = [] }) => {
+  let links = null;
+  if (linksList) {
+    links = linksList.map((entry) => (
       <LinkAbstract {...entry} key={entry.id} />
     ));
   }
 
-  return <S.Container>{entries}</S.Container>;
+  return <S.Container>{links}</S.Container>;
 };
 
-export default EntriesList;
+export default LinksList;

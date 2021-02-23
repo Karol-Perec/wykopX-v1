@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Div = styled.div`
   position: fixed;
-  width: 280px;
+  width: 200px;
   max-width: 70%;
   height: 100%;
   left: 0;

@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
-import { Switch, Route, Redirect} from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import GlobalStyle from './globalStyle'
 
 import Layout from './components/Layout/Layout';
-import MainPage from './containers/MainPage/MainPage'
-import Hits from './containers/Hits/Hits'
+import MainPage from './containers/MainPage/MainPage';
+import Hits from './containers/Hits/Hits';
 import Link from './components/Links/Link/Link';
 
 const Div = styled.div`
@@ -16,9 +17,15 @@ function App() {
 
   const routes = (
     <Switch>
-      <Route path='/hity' component={Hits} />
-      <Route path='/link/:id' component={Link} />
-      <Route path='/' exact component={MainPage} />
+      <Route path='/hity/:period(dnia|tygodnia|miesiaca|roku)?'>
+        <Hits />
+      </Route>
+      <Route path='/link/:id'>
+        <Link />
+      </Route>
+      <Route path='/' exact>
+        <MainPage />
+      </Route>
       <Redirect to='/' />
     </Switch>
   );
@@ -26,6 +33,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Div>
+        <GlobalStyle />
         <Layout>{routes}</Layout>
       </Div>
     </ThemeProvider>

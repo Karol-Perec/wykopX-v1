@@ -3,8 +3,8 @@ import NavItem from './NavItem/NavItem';
 
 import * as S from './style';
 
-const NavItems = ({topBarMode}) => {
-  const isAuthenticated = false; //////////
+const NavItems = ({ topBarMode, onNavItemClick }) => {
+  const isAuthenticated = false; //////////TODO
 
   const myWykop = isAuthenticated ? (
     <NavItem link='/moj'>Mój Wykop</NavItem>
@@ -12,10 +12,18 @@ const NavItems = ({topBarMode}) => {
 
   return (
     <S.UnorderedList topBarMode={topBarMode}>
-      <NavItem link='/' exact>Główna</NavItem>
-      <NavItem link='/wykopalisko'>Wykopalisko</NavItem>
-      <NavItem link='/hity'>Hity</NavItem>
-      <NavItem link='/mikroblog'>Mikroblog</NavItem>
+      <NavItem link='/' exact onClick={onNavItemClick}>
+        Główna
+      </NavItem>
+      <NavItem link='/wykopalisko' onClick={onNavItemClick}>
+        Wykopalisko
+      </NavItem>
+      <NavItem link='/hity' onClick={onNavItemClick}>
+        Hity
+      </NavItem>
+      <NavItem link='/mikroblog' onClick={onNavItemClick}>
+        Mikroblog
+      </NavItem>
       {myWykop}
     </S.UnorderedList>
   );

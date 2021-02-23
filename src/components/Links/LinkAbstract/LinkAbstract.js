@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import Media from './Media/Media';
 import Statistics from './Statistics/Statistics';
 

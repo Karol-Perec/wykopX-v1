@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-
-const Link = ({match}) => {
+import React, { useEffect } from 'react';
+import { useRouteMatch } from 'react-router-dom';
+import axios from '../../../axios';
+const Link = () => {
+  const match = useRouteMatch();
 
   useEffect(() => {
-    axios.get(`https://a2.wykop.pl/Links/Link/${match.params.id}/withcomments/true/appkey/aNd401dAPp`).then(
+    axios.get(`/Links/Link/${match.params.id}/withcomments/true`).then(
       (resp) => {
         console.log(resp);
       },
@@ -14,7 +15,6 @@ const Link = ({match}) => {
     );
   }, []);
 
-  
   return <div></div>;
 };
 

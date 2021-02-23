@@ -12,7 +12,7 @@ const SideDrawer = ({ show, onBackdropClick }) => {
       <S.Div show={show}>
         <Logo/>
         <S.Nav>
-          <NavItems />
+          <NavItems onNavItemClick={onBackdropClick}/>
         </S.Nav>
       </S.Div>
     </>
