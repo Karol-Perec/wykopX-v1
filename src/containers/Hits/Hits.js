@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import axios from '../../axios';
 import NavItem from '../../components/Layout/NavItems/NavItem/NavItem';
@@ -6,20 +6,24 @@ import LinksList from '../../components/Links/LinksList/LinksList';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 import { validateLinks } from '../../utils/LinksUtils';
+import useInfiniteScroll from '../../utils/hooks/useInfiniteScroll'
 
 import * as S from './style';
 
 const Hits = () => {
-  const match = useRouteMatch();
-  const [hitsLinksList, setHitsLinksList] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [hitsLinksList, setHitsLinksList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const loadingRef = useRef(null);
+  useInfiniteScroll(loadingRef, setCurrentPage);
 
   useEffect(() => {
-    axios.get('/Hits/Week').then(
+    setLoading(true);
+    axios.get('/Hits/Week/page/' + currentPage).then(
       (resp) => {
         console.log(resp);
         const validatedLinks = validateLinks(resp.data.data);
-        setHitsLinksList(validatedLinks);
+        setHitsLinksList(hitsLinksList.concat(validatedLinks));
         setLoading(false);
       },
       (err) => {
@@ -27,9 +31,8 @@ const Hits = () => {
         setLoading(false);
       }
     );
-  }, []);
+  }, [currentPage]);
 
-  console.log(match);
   const categories = (
     <S.Categories>
       <NavItem link={'/hity/dnia'}>Dnia</NavItem>
@@ -39,15 +42,11 @@ const Hits = () => {
     </S.Categories>
   );
 
-  let links = <Spinner />;
-  if (!loading) {
-    links = <LinksList linksList={hitsLinksList} />;
-  }
-
   return (
     <div>
       {categories}
-      {links}
+      <LinksList linksList={hitsLinksList} />
+      <div ref={loadingRef}>{loading && <Spinner />}</div>
     </div>
   );
 };

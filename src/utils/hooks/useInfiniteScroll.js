@@ -2,14 +2,19 @@ import { useEffect, useCallback } from 'react';
 
 const useInfiniteScroll = (scrollRef, dispatch) => {
   const scrollObserver = useCallback(
-    node => {
-      new IntersectionObserver(entries => {
-        entries.forEach(en => {
+    (node) => {
+      const options = {
+        root: null,
+        rootMargin: '20px',
+        threshold: 0.9,
+      };
+      new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
           if (en.intersectionRatio > 0) {
-            dispatch(page => page + 1);
+            dispatch((page) => page + 1);
           }
         });
-      }).observe(node);
+      }, options).observe(node);
     },
     [dispatch]
   );
@@ -19,7 +24,6 @@ const useInfiniteScroll = (scrollRef, dispatch) => {
       scrollObserver(scrollRef.current);
     }
   }, [scrollObserver, scrollRef]);
-}
-
+};
 
 export default useInfiniteScroll;

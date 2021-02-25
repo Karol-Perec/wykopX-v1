@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Categories = styled.ul`
-  padding: auto auto auto auto;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,4 +9,5 @@ export const Categories = styled.ul`
   flex-flow: row;
   align-items: left;
   height: 100%;
+  margin: auto;
 `;
