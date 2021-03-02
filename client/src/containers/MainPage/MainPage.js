@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from '../../axios';
+import axios from 'axios';
 
 import LinksList from '../../components/Links/LinksList/LinksList';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-import { validateLinks } from '../../utils/LinksUtils';
-import useInfiniteScroll from '../../utils/hooks/useInfiniteScroll'
+import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 
 const MainPage = () => {
   const [linksList, setLinksList] = useState([]);
@@ -16,10 +15,10 @@ const MainPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get('/Links/Promoted/page/' + currentPage).then(
+    axios.get('/api/' + currentPage).then(
       (resp) => {
-        const validatedLinks = validateLinks(resp.data.data);
-        setLinksList(linksList.concat(validatedLinks));
+        console.log(resp);
+        setLinksList(linksList.concat(resp.data));
         setLoading(false);
       },
       (err) => {

@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import axios from '../../axios';
+import axios from 'axios';
 import NavItem from '../../components/Layout/NavItems/NavItem/NavItem';
 import LinksList from '../../components/Links/LinksList/LinksList';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-import { validateLinks } from '../../utils/LinksUtils';
-import useInfiniteScroll from '../../utils/hooks/useInfiniteScroll'
+import useInfiniteScroll from '../../hooks/useInfiniteScroll'
 
 import * as S from './style';
 
@@ -19,11 +18,10 @@ const Hits = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get('/Hits/Week/page/' + currentPage).then(
+    axios.get('/hits/' + currentPage).then(
       (resp) => {
         console.log(resp);
-        const validatedLinks = validateLinks(resp.data.data);
-        setHitsLinksList(hitsLinksList.concat(validatedLinks));
+        setHitsLinksList(hitsLinksList.concat(resp.data));
         setLoading(false);
       },
       (err) => {

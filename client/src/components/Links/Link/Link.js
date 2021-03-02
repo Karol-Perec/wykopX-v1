@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import axios from '../../../axios';
+import axios from 'axios';
 const Link = () => {
   const match = useRouteMatch();
 

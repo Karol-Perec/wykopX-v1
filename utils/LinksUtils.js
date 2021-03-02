@@ -1,4 +1,4 @@
-export const validateLinks = (links) => {
+const validateLinks = (links) => {
   return links.map((e) => {
     return {
       id: e.id,
@@ -14,3 +14,5 @@ export const validateLinks = (links) => {
     };
   });
 };
+
+exports.validateLinks = validateLinks;
