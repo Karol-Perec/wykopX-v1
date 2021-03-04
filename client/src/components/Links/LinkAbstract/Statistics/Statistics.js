@@ -6,12 +6,16 @@ const Statistics = ({ date, isHot, commentsCount, voteCount }) => {
   return (
     <S.Container>
       <S.VoteCount>
-        <S.CommentIcons />
+        <S.VotedIconsContainer>
+          <S.VotedIcon />
+          {isHot ? <S.IsHotIcon /> : null}
+        </S.VotedIconsContainer>
+
         <span>{voteCount}</span>
       </S.VoteCount>
 
       <S.CommentCount>
-        <S.VotedIcon />
+        <S.CommentIcon />
         <span>{commentsCount}</span>
       </S.CommentCount>
 
