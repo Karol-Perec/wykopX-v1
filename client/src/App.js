@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import GlobalStyle from './globalStyle'
+import GlobalStyle from './globalStyle';
 
 import Layout from './components/Layout/Layout';
 import MainPage from './containers/MainPage/MainPage';
+import Wykopalisko from './containers/Wykopalisko/Wykopalisko';
 import Hits from './containers/Hits/Hits';
 import Link from './components/Links/Link/Link';
 
@@ -19,6 +20,9 @@ function App() {
     <Switch>
       <Route path='/hity/:period(dnia|tygodnia|miesiaca|roku)?'>
         <Hits />
+      </Route>
+      <Route path='/wykopalisko/:category(aktywne|najnowsze|wykopywane|komentowane)?'>
+        <Wykopalisko />
       </Route>
       <Route path='/link/:id'>
         <Link />

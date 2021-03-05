@@ -10,30 +10,30 @@ import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import * as S from './style';
 
 const categoryTypes = {
-  dnia: 'day',
-  tygodnia: 'week',
-  miesiaca: 'month',
-  roku: 'year',
+  aktywne: 'active',
+  najnowsze: 'newest',
+  wykopywane: 'voted',
+  komentowane: 'commented',
 };
 
-const Hits = () => {
+const Wykopalisko = () => {
   const [linksList, setLinksList] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const params = useParams();
   const [category, setCategory] = useState(
-    categoryTypes[params.period] || categoryTypes.tygodnia
+    categoryTypes[params.category] || categoryTypes.aktywne
   );
   const [loading, setLoading] = useState(false);
   const loadingRef = useRef(null);
   useInfiniteScroll(loadingRef, setCurrentPage);
 
   useEffect(() => {
-    setCategory(categoryTypes[params.period] || categoryTypes.tygodnia);
+    setCategory(categoryTypes[params.category] || categoryTypes.aktywne);
   }, [params]);
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/hits/${category}/${currentPage}`).then(
+    axios.get(`/upcoming/${category}/${currentPage}`).then(
       (resp) => {
         console.log(resp);
         setLinksList(linksList.concat(resp.data));
@@ -47,20 +47,20 @@ const Hits = () => {
   }, [currentPage]);
 
   useEffect(() => {
-    setLinksList([])
+    setLinksList([]);
     setCurrentPage(0);
   }, [category]);
 
   const categories = (
     <S.Categories>
-      <NavItem link={'/hity/dnia'}>Dnia</NavItem>
       <NavItem
-        link={'/hity/tygodnia'}
-        isActive={() => category === categoryTypes.tygodnia}>
-        Tygodnia
+        link={'/wykopalisko/aktywne'}
+        isActive={() => category === categoryTypes.aktywne}>
+        Aktywne
       </NavItem>
-      <NavItem link={'/hity/miesiaca'}>Miesiąca</NavItem>
-      <NavItem link={'/hity/roku'}>Roku</NavItem>
+      <NavItem link={'/wykopalisko/najnowsze'}>Najnowsze</NavItem>
+      <NavItem link={'/wykopalisko/wykopywane'}>Wykopywane</NavItem>
+      <NavItem link={'/wykopalisko/komentowane'}>Komentowane</NavItem>
     </S.Categories>
   );
 
@@ -73,4 +73,4 @@ const Hits = () => {
   );
 };
 
-export default Hits;
+export default Wykopalisko;

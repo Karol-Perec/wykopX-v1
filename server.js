@@ -13,7 +13,9 @@ if (process.env.NODE_ENV === 'production') {
 
 const mainPageRoutes = require('./routes/main');
 const hitsRoutes = require('./routes/hits');
-app.use('/api', mainPageRoutes);
+const upcomingRoutes = require('./routes/upcoming');
+app.use('/main', mainPageRoutes);
+app.use('/upcoming', upcomingRoutes);
 app.use('/hits', hitsRoutes);
 
 app.use(cors());

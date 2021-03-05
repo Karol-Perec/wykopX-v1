@@ -15,7 +15,7 @@ const MainPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get('/api/' + currentPage).then(
+    axios.get('/main/' + currentPage).then(
       (resp) => {
         console.log(resp);
         setLinksList(linksList.concat(resp.data));
