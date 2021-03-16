@@ -7,13 +7,30 @@ import { ReactComponent as Logo } from '../../../../assets/images/logo.svg';
 
 export const Container = styled.div`
   color: ${(props) => props.theme.ON_SURFACE_COLOR};
+  text-align: left;
+
+  span {
+    padding-left: 3px;
+    font-size: 12px;
+  }
+
+  @media (min-width: 500px) {
+    width: 70px;
+    display: inline-block;
+    vertical-align: top;
+  }
 `;
 
-export const VoteCount = styled.div``;
+export const StatisticsElement = styled.div`
+  margin-right: 15px;
+  display: inline-block;
+  margin-bottom: 10px;
 
-export const CommentCount = styled.div``;
-
-export const LinkAge = styled.div``;
+  @media (min-width: 500px) {
+    margin-right: 0px;
+    display: block;
+  }
+`;
 
 export const CommentIcon = styled(CommentMaterialIcon).attrs((props) => ({
   style: { color: props.theme.PRIMARY_COLOR },
@@ -37,7 +54,7 @@ export const VotedIcon = styled(Logo).attrs((props) => ({
 `;
 
 export const IsHotIcon = styled(FireMaterialIcon).attrs((props) => ({
-  style: { fill: props.theme.SECONDARY_COLOR, height: '14px', width: '14px'},
+  style: { fill: props.theme.SECONDARY_COLOR, height: '14px' },
 }))`
   position: absolute;
   top: 0%;

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import NavItem from '../../components/Layout/NavItems/NavItem/NavItem';
-import LinksList from '../../components/Links/LinksList/LinksList';
+import EntriesList from '../../components/Entries/EntriesList/EntriesList';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
@@ -10,33 +10,34 @@ import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import * as S from './style';
 
 const categoryTypes = {
-  dnia: 'day',
-  tygodnia: 'week',
-  miesiaca: 'month',
-  roku: 'year',
+  aktywne: 'active',
+  najnowsze: 'newest',
+  hot6h: 'hot6h',
+  hot12h: 'hot12h',
+  hot24h: 'hot24h',
 };
 
-const Hits = () => {
-  const [linksList, setLinksList] = useState([]);
+const Mikroblog = () => {
+  const [entriesList, setEntriesList] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const params = useParams();
   const [category, setCategory] = useState(
-    categoryTypes[params.category] || categoryTypes.tygodnia
+    categoryTypes[params.category] || categoryTypes.hot12h
   );
   const [loading, setLoading] = useState(false);
   const loadingRef = useRef(null);
   useInfiniteScroll(loadingRef, setCurrentPage);
 
   useEffect(() => {
-    setCategory(categoryTypes[params.category] || categoryTypes.tygodnia);
+    setCategory(categoryTypes[params.category] || categoryTypes.hot12h);
   }, [params]);
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/hits/${category}/${currentPage}`).then(
+    axios.get(`/mikroblog/${category}/${currentPage}`).then(
       (resp) => {
         console.log(resp);
-        setLinksList(linksList.concat(resp.data));
+        setEntriesList(entriesList.concat(resp.data));
         setLoading(false);
       },
       (err) => {
@@ -47,30 +48,31 @@ const Hits = () => {
   }, [currentPage]);
 
   useEffect(() => {
-    setLinksList([])
+    setEntriesList([]);
     setCurrentPage(0);
   }, [category]);
 
   const categories = (
     <S.Categories>
-      <NavItem link={'/hity/dnia'}>Dnia</NavItem>
+      <NavItem link={'/mikroblog/najnowsze'}>Najnowsze</NavItem>
+      <NavItem link={'/mikroblog/aktywne'}>Aktywne</NavItem>
+      <NavItem link={'/mikroblog/hot6h'}>Gorące 6h</NavItem>
       <NavItem
-        link={'/hity/tygodnia'}
-        isActive={() => category === categoryTypes.tygodnia}>
-        Tygodnia
+        link={'/mikroblog/hot12h'}
+        isActive={() => category === categoryTypes.hot12h}>
+        Gorące 12h
       </NavItem>
-      <NavItem link={'/hity/miesiaca'}>Miesiąca</NavItem>
-      <NavItem link={'/hity/roku'}>Roku</NavItem>
+      <NavItem link={'/mikroblog/hot24h'}>Gorące 24h</NavItem>
     </S.Categories>
   );
 
   return (
     <div>
       {categories}
-      <LinksList linksList={linksList} />
+      <EntriesList entriesList={entriesList} />
       <div ref={loadingRef}>{loading && <Spinner />}</div>
     </div>
   );
 };
 
-export default Hits;
+export default Mikroblog;

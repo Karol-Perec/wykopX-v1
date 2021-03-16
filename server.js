@@ -14,9 +14,11 @@ if (process.env.NODE_ENV === 'production') {
 const mainPageRoutes = require('./routes/main');
 const hitsRoutes = require('./routes/hits');
 const upcomingRoutes = require('./routes/upcoming');
+const mikroblogRoutes = require('./routes/mikroblog');
 app.use('/main', mainPageRoutes);
 app.use('/upcoming', upcomingRoutes);
 app.use('/hits', hitsRoutes);
+app.use('/mikroblog', mikroblogRoutes);
 
 app.use(cors());
 app.use(express.json());

@@ -7,6 +7,7 @@ import Layout from './components/Layout/Layout';
 import MainPage from './containers/MainPage/MainPage';
 import Wykopalisko from './containers/Wykopalisko/Wykopalisko';
 import Hits from './containers/Hits/Hits';
+import Mikroblog from './containers/Mikroblog/Mikroblog';
 import Link from './components/Links/Link/Link';
 
 const Div = styled.div`
@@ -18,11 +19,14 @@ function App() {
 
   const routes = (
     <Switch>
-      <Route path='/hity/:period(dnia|tygodnia|miesiaca|roku)?'>
+      <Route path='/hity/:category(dnia|tygodnia|miesiaca|roku)?'>
         <Hits />
       </Route>
       <Route path='/wykopalisko/:category(aktywne|najnowsze|wykopywane|komentowane)?'>
         <Wykopalisko />
+      </Route>
+      <Route path='/mikroblog/:category(aktywne|najnowsze|hot6h|hot12h|hot24h)?'>
+        <Mikroblog />
       </Route>
       <Route path='/link/:id'>
         <Link />

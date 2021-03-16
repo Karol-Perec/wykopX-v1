@@ -1,16 +1,16 @@
 const validateLinks = (links) => {
-  return links.map((e) => {
+  return links.map((l) => {
     return {
-      id: e.id,
-      title: e.title,
-      description: e.description,
-      sourceUrl: e.source_url,
-      preview: e.preview,
-      voteCount: e.vote_count,
-      commentsCount: e.comments_count,
-      date: e.date,
-      plus18: e.plus18,
-      isHot: e.is_hot,
+      id: l.id,
+      title: l.title,
+      description: l.description,
+      sourceUrl: l.source_url,
+      preview: l.preview,
+      voteCount: l.vote_count,
+      commentsCount: l.comments_count,
+      date: l.date,
+      plus18: l.plus18,
+      isHot: l.is_hot,
     };
   });
 };

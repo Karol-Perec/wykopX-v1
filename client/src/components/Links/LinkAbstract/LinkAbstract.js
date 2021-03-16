@@ -1,6 +1,7 @@
 import React from 'react';
 import Media from './Media/Media';
 import Statistics from './Statistics/Statistics';
+import { Link } from 'react-router-dom';
 
 import * as S from './style';
 
@@ -29,11 +30,15 @@ const LinkAbstract = ({
         commentsCount={commentsCount}
         voteCount={voteCount}
       />
-      <Media sourceUrl={sourceUrl} preview={preview} />
-      <S.EntryLink to={'/link/' + id}>
-        <S.Title>{title.replace(/&quot;/g, '"')}</S.Title>
-        <S.Description>{description.replace(/&quot;/g, '"')}</S.Description>
-      </S.EntryLink>
+      <S.Content>
+        <Media sourceUrl={sourceUrl} preview={preview} />
+        <S.TextContent>
+          <Link to={'/link/' + id}>
+            <S.Title>{title.replace(/&quot;/g, '"')}</S.Title>
+            <S.Description>{description.replace(/&quot;/g, '"')}</S.Description>
+          </Link>
+        </S.TextContent>
+      </S.Content>
     </S.Container>
   );
 };

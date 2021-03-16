@@ -3,11 +3,11 @@ import LinkAbstract from '../LinkAbstract/LinkAbstract';
 
 import * as S from './style'
 
-const LinksList = ({ linksList = [] }) => {
+const LinksList = ({ linksList }) => {
   let links = null;
   if (linksList) {
-    links = linksList.map((entry) => (
-      <LinkAbstract {...entry} key={entry.id} />
+    links = linksList.map((link) => (
+      <LinkAbstract {...link} key={link.id} />
     ));
   }
 

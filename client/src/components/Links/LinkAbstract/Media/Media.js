@@ -4,46 +4,35 @@ import ReactPlayer from 'react-player/lazy';
 import * as S from './style';
 
 const enlargeMediaContainer = (mediaContainerRef) => () => {
-  mediaContainerRef.current.style.width = '500px';
-  mediaContainerRef.current.style.height = '250px';
+  mediaContainerRef.current.style.width = '100%';
+  mediaContainerRef.current.style.height = '100%';
+  mediaContainerRef.current.style.transition = 'width 0.3s ease-in-out';
 };
 
-const addDefaultImageSrc = (e) => {
-  e.target.src = 'wykop.png'
-}
-
-const Media = ({sourceUrl, preview}) => {
-  const [isVideo, setisVideo] = useState(false);
+const Media = ({ sourceUrl, preview }) => {
   const mediaContainerRef = useRef();
+  const hqPreview = preview?.replace('w104h74', 'w207h139');
+  const displayedPreview = hqPreview || preview;
 
-  useEffect(() => {
-    setisVideo(ReactPlayer.canPlay(sourceUrl));
-  }, [sourceUrl]);
-
-  let media = (
-    <S.PreviewImg
-      src={preview}
-      alt={''}
-      onError={addDefaultImageSrc}></S.PreviewImg>
-  );
-  if (isVideo) {
+  let media = null;
+  if (ReactPlayer.canPlay(sourceUrl)) {
     media = (
       <ReactPlayer
         url={sourceUrl}
         controls
-        light
+        light={displayedPreview}
         width='100%'
         height='100%'
         onClickPreview={enlargeMediaContainer(mediaContainerRef)}
       />
     );
+  } else if (displayedPreview) {
+    media = <S.PreviewImg src={displayedPreview} alt={''} />;
+  } else {
+    media = <S.DefaultPreviewImg />
   }
 
-  return (
-    <div>
-      <S.Container ref={mediaContainerRef}>{media}</S.Container>
-    </div>
-  );
+  return <S.Container ref={mediaContainerRef}>{media}</S.Container>;
 };
 
 export default Media;
