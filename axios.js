@@ -5,9 +5,9 @@ const instance = axios.create({
   baseURL: 'https://a2.wykop.pl',
 });
 
-const MAIN_APPKEY = 'aNd401dAPp';
-const SECONDARY_APPKEY = '482VSi3YyC';
-const SECRECT = 'v8RO1EXXQZ';
+const MAIN_APPKEY = process.env.MAIN_APPKEY;
+const SECONDARY_APPKEY = process.env.SECONDARY_APPKEY;
+const SECRECT = process.env.SECRECT;
 
 instance.interceptors.request.use((config) => {
   config.url += '/appkey/' + MAIN_APPKEY;
