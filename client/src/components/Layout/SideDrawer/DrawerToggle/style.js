@@ -11,7 +11,7 @@ export const OuterDiv = styled.div`
   box-sizing: border-box;
   cursor: pointer;
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     display: none;
   }
 `;

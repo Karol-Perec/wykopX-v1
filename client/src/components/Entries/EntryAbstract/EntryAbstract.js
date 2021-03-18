@@ -16,10 +16,8 @@ const EntryAbstract = ({
   voteCount,
   comments,
 }) => {
-  console.log(comments);
 
-
-  return <S.Container>{id}</S.Container>;
+  return <S.Container>{body}</S.Container>;
 };
 
 export default EntryAbstract;

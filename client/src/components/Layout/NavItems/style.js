@@ -9,7 +9,7 @@ export const UnorderedList = styled.ul`
   align-items: left;
   height: 100%;
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     display: flex;
     flex-flow: row;
     align-items: center;

@@ -24,7 +24,7 @@ const Mikroblog = () => {
   const [category, setCategory] = useState(
     categoryTypes[params.category] || categoryTypes.hot12h
   );
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const loadingRef = useRef(null);
   useInfiniteScroll(loadingRef, setCurrentPage);
 

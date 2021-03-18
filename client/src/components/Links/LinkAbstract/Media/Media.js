@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import ReactPlayer from 'react-player/lazy';
+import { Link } from 'react-router-dom';
 
 import * as S from './style';
 
@@ -9,7 +10,7 @@ const enlargeMediaContainer = (mediaContainerRef) => () => {
   mediaContainerRef.current.style.transition = 'width 0.3s ease-in-out';
 };
 
-const Media = ({ sourceUrl, preview }) => {
+const Media = ({ sourceUrl, preview, linkTo }) => {
   const mediaContainerRef = useRef();
   const hqPreview = preview?.replace('w104h74', 'w207h139');
   const displayedPreview = hqPreview || preview;
@@ -26,10 +27,16 @@ const Media = ({ sourceUrl, preview }) => {
         onClickPreview={enlargeMediaContainer(mediaContainerRef)}
       />
     );
-  } else if (displayedPreview) {
-    media = <S.PreviewImg src={displayedPreview} alt={''} />;
   } else {
-    media = <S.DefaultPreviewImg />
+    media = (
+      <Link to={linkTo}>
+        {displayedPreview ? (
+          <S.PreviewImg src={displayedPreview} alt={''} />
+        ) : (
+          <S.DefaultPreviewImg />
+        )}
+      </Link>
+    );
   }
 
   return <S.Container ref={mediaContainerRef}>{media}</S.Container>;

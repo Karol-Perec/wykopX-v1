@@ -13,15 +13,15 @@ const categoryTypes = {
 const getApiRouteByCategory = (category, pageNumber) => {
   switch (category) {
     case categoryTypes.active:
-      return `/entries/active/return/comments/page/${pageNumber}`;
+      return `/entries/active/return/comments/output/clear/page/${pageNumber}`;
     case categoryTypes.newest:
-      return `/entries/stream/return/comments/page/${pageNumber}`;
+      return `/entries/stream/return/comments/output/clear/page/${pageNumber}`;
     case categoryTypes.hot6h:
-      return `/entries/hot/return/comments/page/${pageNumber}/period/6`;
+      return `/entries/hot/return/comments/output/clear/page/${pageNumber}/period/6`;
     case categoryTypes.hot12h:
-      return `/entries/hot/return/comments/page/${pageNumber}/period/12`;
+      return `/entries/hot/return/comments/output/clear/page/${pageNumber}/period/12`;
     case categoryTypes.hot24h:
-      return `/entries/hot/return/comments/page/${pageNumber}/period/24`;
+      return `/entries/hot/return/comments/output/clear/page/${pageNumber}/period/24`;
   }
 };
 

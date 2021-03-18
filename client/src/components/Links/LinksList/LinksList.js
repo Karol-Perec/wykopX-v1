@@ -1,6 +1,6 @@
 import React from 'react';
-import LinkAbstract from '../LinkAbstract/LinkAbstract';
 
+import LinkAbstract from '../LinkAbstract/LinkAbstract';
 import * as S from './style'
 
 const LinksList = ({ linksList }) => {

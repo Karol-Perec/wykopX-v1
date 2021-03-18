@@ -1,8 +1,8 @@
 import React from 'react';
-import Media from './Media/Media';
-import Statistics from './Statistics/Statistics';
 import { Link } from 'react-router-dom';
 
+import Media from './Media/Media';
+import Statistics from './Statistics/Statistics';
 import * as S from './style';
 
 const LinkAbstract = ({
@@ -31,7 +31,7 @@ const LinkAbstract = ({
         voteCount={voteCount}
       />
       <S.Content>
-        <Media sourceUrl={sourceUrl} preview={preview} />
+        <Media sourceUrl={sourceUrl} preview={preview} linkTo={'/link/' + id} />
         <S.TextContent>
           <Link to={'/link/' + id}>
             <S.Title>{title.replace(/&quot;/g, '"')}</S.Title>

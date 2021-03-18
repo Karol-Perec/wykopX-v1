@@ -15,7 +15,7 @@ export const Div = styled.div`
   transition: transform 0.3s ease-out;
   transform: ${(props) => (props.show ? 'translateX(0)' : 'translate(-100%)')};
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     display: none;
   }
 `;

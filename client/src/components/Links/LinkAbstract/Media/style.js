@@ -7,7 +7,7 @@ export const Container = styled.div`
   width: 100%;
   aspect-ratio: 16 / 9;
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     width: 190px;
     height: auto;
   }

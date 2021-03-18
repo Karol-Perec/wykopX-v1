@@ -9,13 +9,8 @@ export const Container = styled.div`
   color: ${(props) => props.theme.ON_SURFACE_COLOR};
   text-align: left;
 
-  span {
-    padding-left: 3px;
-    font-size: 12px;
-  }
-
-  @media (min-width: 500px) {
-    width: 70px;
+  @media (min-width: 600px) {
+    width: 75px;
     display: inline-block;
     vertical-align: top;
   }
@@ -26,7 +21,12 @@ export const StatisticsElement = styled.div`
   display: inline-block;
   margin-bottom: 10px;
 
-  @media (min-width: 500px) {
+  span {
+    padding-left: 3px;
+    font-size: 14px;
+  }
+
+  @media (min-width: 600px) {
     margin-right: 0px;
     display: block;
   }
