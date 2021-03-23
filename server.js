@@ -24,7 +24,7 @@ app.use('/api/mikroblog', mikroblogRoutes);
 app.use('/api/link', linkRoutes);
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public/index.html'), (err) => {
+  res.sendFile(path.join(__dirname, 'client/build/index.html'), (err) => {
     if (err) {
       res.status(500).send(err);
     }

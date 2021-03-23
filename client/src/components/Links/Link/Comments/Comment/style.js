@@ -6,9 +6,6 @@ export const CommentContainer = styled.div`
   a {
     text-decoration: none;
   }
-
-  @media (min-width: 600px) {
-  }
 `;
 
 export const Avatar = styled.img`
