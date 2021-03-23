@@ -32,8 +32,6 @@ export const Content = styled.div`
   padding: 15px;
   width: auto;
   max-width: calc(100% - 56px);
-  @media (min-width: 600px) {
-  }
 `;
 
 export const Username = styled.span`
@@ -55,6 +53,8 @@ export const CommentText = styled.div`
   color: ${(props) => props.theme.ON_SURFACE_COLOR_2};
   font-size: 14px;
   word-break: break-word;
+  margin-top: 5px;
+  margin-bottom: 5px;
 
   a {
     color: ${(props) => props.theme.PRIMARY_COLOR};
@@ -62,5 +62,9 @@ export const CommentText = styled.div`
 `;
 
 export const ResponsesContainer = styled.div`
-  margin-left: 60px;
+  margin-left: 30px;
+
+  @media (min-width: 600px) {
+    margin-left: 60px;
+  }
 `;

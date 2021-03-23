@@ -27,6 +27,7 @@ const Comment = ({ comment, responses }) => {
           {comment.embed && <Media {...comment.embed} />}
         </S.Content>
       </S.CommentContainer>
+      <S.CommentContainer></S.CommentContainer>
       <S.ResponsesContainer>
         {responses?.map((r) => (
           <Comment key={r.id} comment={r} />
