@@ -33,7 +33,7 @@ const Hits = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/hits/${category}/${currentPage}`).then(
+    axios.get(`/api/hits/${category}/${currentPage}`).then(
       (resp) => {
         console.log(resp);
         setLinksList(linksList.concat(resp.data));

@@ -4,16 +4,25 @@ import { Link } from 'react-router-dom';
 
 import * as S from './style';
 
-const Media = ({ sourceUrl, preview, linkTo }) => {
+const Media = ({
+  type,
+  url,
+  source,
+  preview,
+  plus18,
+  size,
+  animated,
+  ratio,
+}) => {
   const mediaContainerRef = useRef();
-  const hqPreview = preview?.replace('w104h74', 'w207h139');
+  const hqPreview = null; //preview?.replace('w104h74', 'w207h139');
   const displayedPreview = hqPreview || preview;
 
   let media = null;
-  if (ReactPlayer.canPlay(sourceUrl)) {
+  if (type === 'video' && ReactPlayer.canPlay(url)) {
     media = (
       <ReactPlayer
-        url={sourceUrl}
+        url={url}
         controls
         light={displayedPreview}
         width='100%'
@@ -21,25 +30,21 @@ const Media = ({ sourceUrl, preview, linkTo }) => {
         onClickPreview={() => enlargeMediaContainer(mediaContainerRef)}
       />
     );
-  } else {
+  } else if (type === 'image') {
     media = (
-      <Link to={linkTo}>
-        {displayedPreview ? (
-          <S.PreviewImg src={displayedPreview} alt={''} />
-        ) : (
-          <S.DefaultPreviewImg />
-        )}
-      </Link>
+      <a href={url}>
+        <S.Image src={url} alt={''} />
+      </a>
     );
   }
 
-  return <S.Container ref={mediaContainerRef}>{media}</S.Container>;
+  return <S.Container ref={mediaContainerRef} ratio={ratio}>{media}</S.Container>;
 };
 
 function enlargeMediaContainer(mediaContainerRef) {
   mediaContainerRef.current.style.width = '100%';
   mediaContainerRef.current.style.height = '100%';
   mediaContainerRef.current.style.transition = 'width 0.3s ease-in-out';
-};
+}
 
 export default Media;

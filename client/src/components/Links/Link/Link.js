@@ -12,7 +12,7 @@ const Link = () => {
   const match = useRouteMatch();
 
   useEffect(() => {
-    axios.get('/link/' + match.params.id).then(
+    axios.get('/api/link/' + match.params.id).then(
       (resp) => {
         console.log(resp.data);
         setLink(resp.data);

@@ -34,7 +34,7 @@ const Mikroblog = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/mikroblog/${category}/${currentPage}`).then(
+    axios.get(`/api/mikroblog/${category}/${currentPage}`).then(
       (resp) => {
         console.log(resp);
         setEntriesList(entriesList.concat(resp.data));

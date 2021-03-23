@@ -10,7 +10,7 @@ export const Container = styled.div`
   text-align: left;
 
   @media (min-width: 600px) {
-    width: 75px;
+    width: 85px;
     display: inline-block;
     vertical-align: top;
   }

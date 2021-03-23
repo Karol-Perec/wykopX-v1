@@ -28,7 +28,7 @@ function App() {
       <Route path='/mikroblog/:category(aktywne|najnowsze|hot6h|hot12h|hot24h)?'>
         <Mikroblog />
       </Route>
-      <Route path='/link/:id'>
+      <Route path='/link/:id(\d+)'>
         <Link />
       </Route>
       <Route path='/' exact>

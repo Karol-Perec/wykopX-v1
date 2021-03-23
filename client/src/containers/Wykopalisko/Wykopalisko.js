@@ -33,7 +33,7 @@ const Wykopalisko = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/upcoming/${category}/${currentPage}`).then(
+    axios.get(`/api/upcoming/${category}/${currentPage}`).then(
       (resp) => {
         console.log(resp);
         setLinksList(linksList.concat(resp.data));

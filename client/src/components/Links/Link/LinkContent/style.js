@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: ${(props) => props.theme.SURFACE_COLOR};
-  border-color: ${(props) => props.theme.ON_SURFACE_2_COLOR};
+  border-color: ${(props) => props.theme.ON_SURFACE_COLOR_2};
 
   box-sizing: border-box;
   box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.4);
-  border-radius: 5px 5px;
+  border-radius: 8px;
   margin: auto auto;
   margin-bottom: 20px;
   padding: 15px;
@@ -49,7 +49,7 @@ export const Title = styled.h2`
 `;
 
 export const Description = styled.p`
-  color: ${(props) => props.theme.ON_SURFACE_2_COLOR};
+  color: ${(props) => props.theme.ON_SURFACE_COLOR_2};
   font-size: 14px;
   text-align: left;
 `;

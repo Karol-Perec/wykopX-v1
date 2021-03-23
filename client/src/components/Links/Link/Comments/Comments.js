@@ -16,24 +16,22 @@ const orderComparators = {
 };
 
 const Comments = ({ comments, responses }) => {
-  const [order, setOrder] = useState(orderOptions.best);
+  const [orderBy, setOrderBy] = useState(orderOptions.best);
 
   const headComments = comments
-    .filter((c) => c.id === c.parent_id)
-    .sort(orderComparators[order])
+    ?.filter((c) => c.id === c.parent_id)
+    .sort(orderComparators[orderBy])
     .map((c) => (
-      <S.Container>
-        <Comment
-          key={c.id}
-          comment={c}
-          responses={comments.filter(
-            (r) => r.parent_id === c.id && r.id !== c.id
-          )}
-        />
-      </S.Container>
+      <Comment
+        key={c.id}
+        comment={c}
+        responses={comments.filter(
+          (r) => r.parent_id === c.id && r.id !== c.id
+        )}
+      />
     ));
 
-  return headComments;
+  return <S.Container>{headComments}</S.Container>;
 };
 
 export default Comments;

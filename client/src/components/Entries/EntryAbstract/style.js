@@ -6,7 +6,7 @@ export const Container = styled.div`
 
   box-sizing: border-box;
   box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.4);
-  border-radius: 5px 5px;
+  border-radius: 8px;
   margin: auto auto;
   margin-bottom: 20px;
   padding: 15px;
