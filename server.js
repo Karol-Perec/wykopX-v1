@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 
 dotenv.config();
 const app = express();
@@ -21,6 +22,14 @@ app.use('/api/upcoming', upcomingRoutes);
 app.use('/api/hits', hitsRoutes);
 app.use('/api/mikroblog', mikroblogRoutes);
 app.use('/api/link', linkRoutes);
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public/index.html'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
 
 app.use(cors());
 app.use(express.json());
