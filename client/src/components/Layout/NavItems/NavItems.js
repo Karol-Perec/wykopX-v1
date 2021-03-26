@@ -1,14 +1,21 @@
 import React from 'react';
-import NavItem from './NavItem/NavItem';
+import { useSelector } from 'react-redux';
 
+import NavItem from './NavItem/NavItem';
 import * as S from './style';
 
 const NavItems = ({ topBarMode, onNavItemClick }) => {
-  const isAuthenticated = false; //////////TODO
+  const isAuthenticated = useSelector((state) => state.auth.token !== null);
 
-  const myWykop = isAuthenticated ? (
-    <NavItem link='/moj'>Mój Wykop</NavItem>
-  ) : null;
+  const guardedNavs = isAuthenticated ? (
+    <>
+      <NavItem link='/logout'>Wyloguj się</NavItem>
+    </>
+  ) : (
+    <NavItem link='/login' onClick={onNavItemClick}>
+      Zaloguj się
+    </NavItem>
+  );
 
   return (
     <S.UnorderedList topBarMode={topBarMode}>
@@ -24,7 +31,7 @@ const NavItems = ({ topBarMode, onNavItemClick }) => {
       <NavItem link='/mikroblog' onClick={onNavItemClick}>
         Mikroblog
       </NavItem>
-      {myWykop}
+      {guardedNavs}
     </S.UnorderedList>
   );
 };

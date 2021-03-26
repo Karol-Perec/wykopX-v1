@@ -8,10 +8,12 @@ import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 import themeReducer from './store/Theme/reducer';
+import authReducer from './store/Auth/reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   theme: themeReducer,
+  auth: authReducer,
 });
 
 const store = createStore(

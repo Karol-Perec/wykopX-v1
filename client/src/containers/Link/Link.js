@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import axios from 'axios';
 
-import Comments from './Comments/Comments';
-import Spinner from '../../UI/Spinner/Spinner';
-import LinkContent from './LinkContent/LinkContent';
+import Comments from '../../components/Links/Comments/Comments';
+import Spinner from '../../components/UI/Spinner/Spinner'
+import LinkContent from '../../components/Links/LinkContent/LinkContent'
 import * as S from './style';
 
 const Link = () => {

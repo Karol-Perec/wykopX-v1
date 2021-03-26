@@ -8,7 +8,7 @@ export const ListItem = styled.li`
   height: 100%;
   text-align: left;
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     margin: 0;
     display: flex;
     height: 100%;
@@ -30,7 +30,7 @@ export const NavLinkWrapper = styled(NavLink)`
     color: ${(props) => props.theme.PRIMARY_COLOR};
   }
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     padding: 16px 10px;
     border-bottom: 4px solid transparent;
     height: 100%;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Media from '../Media/Media';
+import Media from './Media/Media';
 import * as S from './style';
 
 const LinkContent = ({ link }) => {

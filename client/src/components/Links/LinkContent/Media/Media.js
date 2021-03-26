@@ -10,8 +10,7 @@ const Media = ({ sourceUrl, preview }) => {
   let media = null;
   if (ReactPlayer.canPlay(sourceUrl)) {
     media = <ReactPlayer url={sourceUrl} controls width='100%' height='100%' />;
-  }
-  if (displayedPreview) {
+  } else if (displayedPreview) {
     media = (
       <a href={sourceUrl}>
         <img src={displayedPreview} alt={''} />

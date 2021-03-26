@@ -17,11 +17,13 @@ const hitsRoutes = require('./routes/hits');
 const upcomingRoutes = require('./routes/upcoming');
 const mikroblogRoutes = require('./routes/mikroblog');
 const linkRoutes = require('./routes/link');
+const authRoutes = require('./routes/auth');
 app.use('/api/main', mainPageRoutes);
 app.use('/api/upcoming', upcomingRoutes);
 app.use('/api/hits', hitsRoutes);
 app.use('/api/mikroblog', mikroblogRoutes);
 app.use('/api/link', linkRoutes);
+app.use('/api/auth', authRoutes);
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'client/build/index.html'), (err) => {
