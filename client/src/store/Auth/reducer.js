@@ -2,10 +2,11 @@ import * as actionTypes from './actionTypes';
 
 const initialState = {
   token: null,
-  login: null,
+  profile: null,
   loading: false,
   error: null,
   wykopConnectUrl: null,
+  accountKey: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +29,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         token: action.token,
-        login: action.login,
+        accountKey: action.accountKey,
+        profile: action.profile,
         error: null,
         loading: false,
       };
@@ -44,7 +46,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         token: null,
-        login: null,
+        profile: null,
+        accountKey: null,
       };
     default:
       return state;

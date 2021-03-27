@@ -17,7 +17,6 @@ const MainPage = () => {
     setLoading(true);
     axios.get('/api/main/' + currentPage).then(
       (resp) => {
-        console.log(resp);
         setLinksList(linksList.concat(resp.data));
         setLoading(false);
       },

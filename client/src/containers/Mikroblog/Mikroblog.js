@@ -52,6 +52,12 @@ const Mikroblog = () => {
     setCurrentPage(0);
   }, [category]);
 
+  useEffect(() => {
+    axios.get('/api/auth/xD').then((resp) => {
+      console.log(resp);
+    })
+  }, []);
+
   const categories = (
     <S.Categories>
       <NavItem link={'/mikroblog/najnowsze'}>Najnowsze</NavItem>

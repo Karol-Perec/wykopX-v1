@@ -34,8 +34,8 @@ const LinkAbstract = ({
         <Media sourceUrl={sourceUrl} preview={preview} linkTo={'/link/' + id} />
         <S.TextContent>
           <Link to={'/link/' + id}>
-            <S.Title>{title.replace(/&quot;/g, '"')}</S.Title>
-            <S.Description>{description.replace(/&quot;/g, '"')}</S.Description>
+            <S.Title>{title?.replace(/&quot;/g, '"')}</S.Title>
+            <S.Description>{description?.replace(/&quot;/g, '"')}</S.Description>
           </Link>
         </S.TextContent>
       </S.Content>

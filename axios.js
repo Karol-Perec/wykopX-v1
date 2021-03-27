@@ -1,5 +1,6 @@
 const axios = require('axios');
 const { MD5 } = require('crypto-js');
+const querystring = require('querystring');
 
 const instance = axios.create({
   baseURL: 'https://a2.wykop.pl',
@@ -13,11 +14,12 @@ instance.interceptors.request.use((config) => {
   config.url += '/appkey/' + SECONDARY_APPKEY;
 
   let signContent = SECRECT + config.baseURL + config.url;
-  if (config.method === 'POST') {
-    signContent += '';
+  
+  if (config.method === 'post') {
+    signContent += Object.values(config.data).join(',');
   }
-  config.headers['Content'] = 'application/x-www-form-urlencoded';
-  const apiSign = MD5(signContent);
+  config.data = querystring.stringify(config.data)
+  const apiSign = MD5(signContent).toString();
   config.headers['apisign'] = apiSign;
 
   return config;

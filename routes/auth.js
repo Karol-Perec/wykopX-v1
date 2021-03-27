@@ -1,7 +1,9 @@
 const router = require('express').Router();
+const axios = require('../axios');
 const { MD5 } = require('crypto-js');
 const btoa = require('btoa');
 const atob = require('atob');
+const querystring = require('querystring');
 
 const SECONDARY_APPKEY = process.env.SECONDARY_APPKEY;
 const SECRECT = process.env.SECRECT;
@@ -24,8 +26,42 @@ router.route('/login').get((req, res) => {
   ) {
     res.status(422).send('Manipulated connect data');
   } else {
-    res.json({ login: connectData.login, token: connectData.token });
+    axios
+      .post('/Login/Index/', {
+        login: connectData.login,
+        accountkey: connectData.token,
+      })
+      .then((response) => {
+        console.log(response);
+        res.json({
+          profile: response.data.data.profile,
+          accountkey: connectData.token,
+          token: response.data.data.userkey,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
+});
+
+router.route('/token').get((req, res) => {
+  axios
+    .post('/Login/Index/', {
+      login: req.query.login,
+      accountkey: req.query.accountkey,
+    })
+    .then((response) => {
+      console.log(response);
+      res.json({
+        profile: response.data.data.profile,
+        accountkey: req.query.accountkey,
+        token: response.data.data.userkey,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 function generateConnectURL(redirectUrl) {
