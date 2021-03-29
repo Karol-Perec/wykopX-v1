@@ -13,8 +13,8 @@ router.route('/getUrl').get((req, res) => {
   res.json(generateConnectURL(redirectUrl));
 });
 
-router.route('/login').get((req, res) => {
-  const connectData = JSON.parse(atob(req.query.connectData));
+router.route('/login').post((req, res) => {
+  const connectData = JSON.parse(atob(req.body.connectData));
 
   if (connectData.appkey !== SECONDARY_APPKEY) {
     res.status(422).send('Connect data for wrong appkey');
@@ -40,16 +40,16 @@ router.route('/login').get((req, res) => {
         });
       })
       .catch((error) => {
-        console.log(error);
+        res.status(500).json(error);
       });
   }
 });
 
-router.route('/token').get((req, res) => {
+router.route('/token').post((req, res) => {
   axios
     .post('/Login/Index/', {
-      login: req.query.login,
-      accountkey: req.query.accountkey,
+      login: req.body.login,
+      accountkey: req.body.accountkey,
     })
     .then((response) => {
       console.log(response);
@@ -60,7 +60,7 @@ router.route('/token').get((req, res) => {
       });
     })
     .catch((error) => {
-      console.log(error);
+      res.status(500).json(error);
     });
 });
 

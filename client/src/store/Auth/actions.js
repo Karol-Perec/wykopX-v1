@@ -74,38 +74,36 @@ export const checkAuthTimeout = (expirationTime) => {
   };
 };
 
+// axios
+// .get(`/api/auth/login`, {
+//   params: {
+//     connectData: connectData,
+//   },
+// })
+// .then(
+
 export const authenticate = (connectData) => {
   return (dispatch) => {
     dispatch(authStart());
-    axios
-      .get(`/api/auth/login`, {
-        params: {
-          connectData: connectData,
-        },
-      })
-      .then(
-        (resp) => {
-          const expirationDate = new Date(
-            new Date().getTime() + TIMEOUT_TIME_IN_MS
-          );
-          localStorage.setItem('expirationDate', expirationDate);
-          localStorage.setItem('token', resp.data.token);
-          localStorage.setItem('accountkey', resp.data.accountkey);
-          localStorage.setItem('profile', JSON.stringify(resp.data.profile));
-          dispatch(
-            authSuccess(
-              resp.data.token,
-              resp.data.accountkey,
-              resp.data.profile
-            )
-          );
-          dispatch(checkAuthTimeout(connectData));
-        },
-        (err) => {
-          console.log(err);
-          dispatch(authFail(err));
-        }
-      );
+    axios.post(`/api/auth/login`, { connectData: connectData }).then(
+      (resp) => {
+        const expirationDate = new Date(
+          new Date().getTime() + TIMEOUT_TIME_IN_MS
+        );
+        localStorage.setItem('expirationDate', expirationDate);
+        localStorage.setItem('token', resp.data.token);
+        localStorage.setItem('accountkey', resp.data.accountkey);
+        localStorage.setItem('profile', JSON.stringify(resp.data.profile));
+        dispatch(
+          authSuccess(resp.data.token, resp.data.accountkey, resp.data.profile)
+        );
+        dispatch(checkAuthTimeout(connectData));
+      },
+      (err) => {
+        console.log(err);
+        dispatch(authFail(err));
+      }
+    );
   };
 };
 
@@ -130,11 +128,9 @@ export const authCheckState = () => {
       const expirationDate = new Date(localStorage.getItem('expirationDate'));
       if (expirationDate <= new Date()) {
         axios
-          .get(`/api/auth/token`, {
-            params: {
+          .post(`/api/auth/token`, {
               login: profile.login,
               accountkey: accountkey,
-            },
           })
           .then(
             (resp) => {

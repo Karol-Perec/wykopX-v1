@@ -5,15 +5,15 @@ const { validateLinks } = require('../utils/LinksUtils');
 router.route('/:id').get((req, res) => {
   const id = req.params.id;
   axios.get(`/Links/Link/${id}/withcomments/true`).then(
-    (resp) => {
-      if (!resp.data.error) {
-        res.json(resp.data.data);
+    (response) => {
+      if (!response.data.error) {
+        res.json(response.data.data);
       } else {
-        res.json(resp.data.error);
+        res.json(response.data.error);
       }
     },
-    (err) => {
-      res.json(err);
+    (error) => {
+      res.status(500).json(error);
     }
   );
 });

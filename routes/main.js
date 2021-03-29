@@ -8,16 +8,16 @@ router.route('/:pageNumber').get((req, res) => {
     res.json([]);
   } else {
     axios.get('/Links/Promoted/page/' + pageNumber).then(
-      (resp) => {
-        if (!resp.data.error) {
-          const validatedLinks = validateLinks(resp.data.data);
+      (response) => {
+        if (!response.data.error) {
+          const validatedLinks = validateLinks(response.data.data);
           res.json(validatedLinks);
         } else {
-          res.json(resp.data.error);
+          res.json(response.data.error);
         }
       },
-      (err) => {
-        res.json(err);
+      (error) => {
+        res.status(500).json(error);
       }
     );
   }

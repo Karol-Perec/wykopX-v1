@@ -7,6 +7,8 @@ dotenv.config();
 const app = express();
 const router = express.Router();
 const port = process.env.PORT || 8080;
+app.use(cors());
+app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
@@ -33,8 +35,6 @@ app.get('/*', function (req, res) {
   });
 });
 
-app.use(cors());
-app.use(express.json());
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });

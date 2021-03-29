@@ -33,16 +33,16 @@ router.route('/:category/:pageNumber').get((req, res) => {
     res.json([]);
   } else {
     axios.get(getApiRouteByCategory(category, pageNumber)).then(
-      (resp) => {
-        if (!resp.data.error) {
-          const validatedEntries = validateEntries(resp.data.data);
+      (response) => {
+        if (!response.data.error) {
+          const validatedEntries = validateEntries(response.data.data);
           res.json(validatedEntries);
         } else {
-          res.json(resp.data.error);
+          res.json(response.data.error);
         }
       },
-      (err) => {
-        res.json(err);
+      (error) => {
+        res.status(500).json(error);
       }
     );
   }
