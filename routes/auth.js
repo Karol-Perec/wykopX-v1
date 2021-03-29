@@ -27,7 +27,7 @@ router.route('/login').post((req, res) => {
     res.status(422).send('Manipulated connect data');
   } else {
     axios
-      .post('/Login/Index/', {
+      .post('/Login/Index', {
         login: connectData.login,
         accountkey: connectData.token,
       })
@@ -47,7 +47,7 @@ router.route('/login').post((req, res) => {
 
 router.route('/token').post((req, res) => {
   axios
-    .post('/Login/Index/', {
+    .post('/Login/Index', {
       login: req.body.login,
       accountkey: req.body.accountkey,
     })

@@ -15,7 +15,7 @@ const orderComparators = {
   best: (c1, c2) => c2.vote_count - c1.vote_count,
 };
 
-const Comments = ({ comments, responses }) => {
+const Comments = ({ comments }) => {
   const [orderBy, setOrderBy] = useState(orderOptions.best);
 
   const headComments = comments

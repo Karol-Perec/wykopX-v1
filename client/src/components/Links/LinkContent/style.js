@@ -25,7 +25,6 @@ export const Content = styled.div`
   @media (min-width: 600px) {
     display: inline-flex;
     flex-flow: wrap;
-    width: calc(100% - 75px);
   }
 `;
 

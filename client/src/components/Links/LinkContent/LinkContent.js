@@ -7,7 +7,9 @@ const LinkContent = ({ link }) => {
   return (
     <S.Container>
       <S.Content>
-        <Media sourceUrl={link.source_url} preview={link.preview} />
+        {link.preview && (
+          <Media sourceUrl={link.source_url} preview={link.preview} />
+        )}
         <S.TextContent>
           <a href={link.source_url}>
             <S.Title>{link.title.replace(/&quot;/g, '"')}</S.Title>
