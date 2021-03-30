@@ -11,7 +11,7 @@ router.route('/:category/:pageNumber').get((req, res) => {
   } else {
     axios.get(`/hits/${category}/page/${pageNumber}`).then(
       (response) => {
-        if (!resp.data.error) {
+        if (!response.data.error) {
           const validatedLinks = validateLinks(response.data.data);
           res.json(validatedLinks);
         } else {
