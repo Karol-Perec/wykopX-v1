@@ -17,9 +17,10 @@ const Media = ({
   const mediaContainerRef = useRef();
   const hqPreview = null; //preview?.replace('w104h74', 'w207h139');
   const displayedPreview = hqPreview || preview;
+  const isVideo = type === 'video' && ReactPlayer.canPlay(url);
 
   let media = null;
-  if (type === 'video' && ReactPlayer.canPlay(url)) {
+  if (isVideo) {
     media = (
       <ReactPlayer
         url={url}
@@ -27,7 +28,6 @@ const Media = ({
         light={displayedPreview}
         width='100%'
         height='100%'
-        onClickPreview={() => enlargeMediaContainer(mediaContainerRef)}
       />
     );
   } else if (type === 'image') {
@@ -38,13 +38,14 @@ const Media = ({
     );
   }
 
-  return <S.Container ref={mediaContainerRef} ratio={ratio}>{media}</S.Container>;
+  return (
+    <S.Container
+      ref={mediaContainerRef}
+      ratio={ratio}
+      isContainingVideo={isVideo}>
+      {media}
+    </S.Container>
+  );
 };
-
-function enlargeMediaContainer(mediaContainerRef) {
-  mediaContainerRef.current.style.width = '100%';
-  mediaContainerRef.current.style.height = '100%';
-  mediaContainerRef.current.style.transition = 'width 0.3s ease-in-out';
-}
 
 export default Media;

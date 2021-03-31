@@ -25,9 +25,7 @@ export const Content = styled.div`
   box-sizing: border-box;
   box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.4);
   border-radius: 18px;
-
   padding: 15px;
-  width: auto;
   max-width: calc(100% - 56px);
 `;
 
@@ -57,6 +55,18 @@ export const CommentText = styled.div`
     color: ${(props) => props.theme.PRIMARY_COLOR};
   }
 `;
+
+export const Interactions = styled.div`
+  color: ${(props) => props.theme.ON_SURFACE_COLOR_2};
+  margin-left: 60px;
+  margin-top: 5px;
+  font-size: 14px;
+
+  :hover {
+    color: ${(props) => props.theme.PRIMARY_COLOR};
+    cursor: pointer;
+  }
+`
 
 export const ResponsesContainer = styled.div`
   margin-left: 30px;

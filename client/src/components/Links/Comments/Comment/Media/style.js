@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: inline-block;
-  width: 100%;
+  width: ${(props) => props.isContainingVideo ? 'calc(100vw - 180px)' : 'auto'};
   
   @media (min-width: 600px) {
-    width: 50%;
+    width: 390px;
   }
 
   aspect-ratio: ${(props) => 1 / props.ratio};

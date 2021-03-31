@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Spoiler from './Spoiler/Spoiler';
 import Media from './Media/Media';
 
-const Comment = ({ comment, responses }) => {
+const Comment = ({ comment, responses, reply }) => {
   const parsedComment = parseCommentHtmlText(comment.body);
   return (
     <>
@@ -26,8 +26,10 @@ const Comment = ({ comment, responses }) => {
           <S.CommentText>{parsedComment}</S.CommentText>
           {comment.embed && <Media {...comment.embed} />}
         </S.Content>
+        <S.Interactions>
+          <span onClick={() => reply()}>Odpowiedz</span>
+        </S.Interactions>
       </S.CommentContainer>
-      <S.CommentContainer></S.CommentContainer>
       <S.ResponsesContainer>
         {responses?.map((r) => (
           <Comment key={r.id} comment={r} />

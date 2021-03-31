@@ -14,10 +14,6 @@ import Link from './containers/Link/Link';
 import Login from './containers/Auth/Login/Login';
 import Logout from './containers/Auth/Logout/Logout';
 
-const Container = styled.div`
-  text-align: center;
-`;
-
 function App() {
   const theme = useSelector((state) => state.theme.theme);
   const isAuthenticated = useSelector((state) => state.auth.token !== null);
@@ -78,10 +74,8 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container>
-        <GlobalStyle />
-        <Layout>{routes}</Layout>
-      </Container>
+      <GlobalStyle />
+      <Layout>{routes}</Layout>
     </ThemeProvider>
   );
 }
