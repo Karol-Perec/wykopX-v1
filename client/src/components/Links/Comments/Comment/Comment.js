@@ -26,9 +26,10 @@ const Comment = ({ comment, responses, reply }) => {
           <S.CommentText>{parsedComment}</S.CommentText>
           {comment.embed && <Media {...comment.embed} />}
         </S.Content>
-        <S.Interactions>
+        {/* <S.Interactions>
           <span onClick={() => reply()}>Odpowiedz</span>
-        </S.Interactions>
+        </S.Interactions> */}
+        
       </S.CommentContainer>
       <S.ResponsesContainer>
         {responses?.map((r) => (
