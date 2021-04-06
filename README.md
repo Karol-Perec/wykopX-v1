@@ -1,6 +1,6 @@
 ## Demo
 
-App programming in progress...newest version always available on:
+App development in progress...newest version always available on:
 https://wykopx.herokuapp.com/
 
 ## Things used:
