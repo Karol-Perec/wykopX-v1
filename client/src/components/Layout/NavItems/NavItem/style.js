@@ -32,10 +32,10 @@ export const NavLinkWrapper = styled(NavLink)`
 
   @media (min-width: 600px) {
     padding: 16px 10px;
-    border-bottom: 4px solid transparent;
+    border-bottom: 2px solid transparent;
     height: 100%;
     &.active {
-      border-bottom: 4px solid #fff;
+      border-bottom: 2px solid ${(props) => props.theme.PRIMARY_COLOR};
     }
   }
 `;

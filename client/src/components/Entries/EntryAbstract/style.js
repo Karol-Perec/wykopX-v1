@@ -5,7 +5,7 @@ export const Container = styled.div`
   border-color: ${(props) => props.theme.ON_SURFACE_2_COLOR};
 
   box-sizing: border-box;
-  box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   margin: auto auto;
   margin-bottom: 20px;
@@ -13,6 +13,7 @@ export const Container = styled.div`
   width: 95%;
   height: auto;
   max-width: 900px;
+  color: ${(props) => props.theme.ON_SURFACE_COLOR_2};
 
 //   @media (min-width: 600px) {
 //     display: block;

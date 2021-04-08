@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes';
 
 const lightTheme = {
-  BACKGROUND_COLOR: '#fff',
+  BACKGROUND_COLOR: '#fafafa',
   SURFACE_COLOR: '#fff',
   PRIMARY_COLOR: '#328efe',
   SECONDARY_COLOR: '#ff5917',

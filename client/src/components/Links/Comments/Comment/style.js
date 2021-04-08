@@ -23,7 +23,7 @@ export const Content = styled.div`
 
   display: inline-block;
   box-sizing: border-box;
-  box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 18px;
   padding: 15px;
   max-width: calc(100% - 56px);
