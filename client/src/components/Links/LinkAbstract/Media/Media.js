@@ -38,7 +38,6 @@ const Media = ({ sourceUrl, preview, linkTo }) => {
 
 function enlargeMediaContainer(mediaContainerRef) {
   mediaContainerRef.current.style.width = '100%';
-  mediaContainerRef.current.style.height = '100%';
   mediaContainerRef.current.style.transition = 'width 0.3s ease-in-out';
 };
 

@@ -5,11 +5,24 @@ export const Container = styled.div`
   display: inline-block;
   box-sizing: border-box;
   width: 100%;
+  
   aspect-ratio: 16 / 9;
+  @supports not (aspect-ratio: 16 / 9) {
+    ::before {
+      float: left;
+      padding-top: 56.25%;
+      content: '';
+    }
+
+    ::after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+  }
 
   @media (min-width: 600px) {
     width: 190px;
-    height: auto;
   }
 `;
 
