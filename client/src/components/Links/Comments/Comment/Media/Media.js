@@ -36,6 +36,8 @@ const Media = ({
         <S.Image src={url} alt={''} />
       </a>
     );
+  } else {
+    return null;
   }
 
   return (
