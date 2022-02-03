@@ -1,6 +1,9 @@
+## Deprecated
+
+This project is deployed and working but deprecated. New version moved to https://github.com/Karol-Perec/wykopX
+
 ## Demo
 
-App development in progress...newest version always available on:
 https://wykopx.herokuapp.com/
 
 ## Things used:
